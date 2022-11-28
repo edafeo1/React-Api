@@ -59,25 +59,55 @@ function App() {
     }
   }
 
+
+  useEffect(() => {
+    tableData.forEach(item => {
+      item['state-province'] = item['state-province'] == null ? "null" : item['state-province']
+    })
+    console.log("table dat", tableData)
+  }, [tableData])
+
   
+
+  const columns = [
+    {
+      dataField: "country",
+      text: "Country",
+      sort: true
+    },
+    {
+      dataField: "domains",
+      text: "Domains",
+      sort: true
+    },
+    {
+      dataField: "web_pages",
+      text: "Web pages",
+      sort: true
+    },
+    {
+      dataField: "alpha_two_code",
+      text: "Alpha two code",
+    },
+    {
+      dataField: "name",
+      text: "Name",
+      sort: true
+    },
+    {
+      dataField: "state-province",
+      text: "State",
+      sort: true
+    },
+
+  ];
+
+
 
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     
     </div>
   );
 }
