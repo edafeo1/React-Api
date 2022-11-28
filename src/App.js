@@ -2,6 +2,13 @@ import logo from './logo.svg';
 import './App.css';
 
 import { useEffect, useState } from 'react';
+
+import "bootstrap/dist/css/bootstrap.css";
+import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
+
+import BootstrapTable from "react-bootstrap-table-next";
+import paginationFactory from "react-bootstrap-table2-paginator";
+import Button from 'react-bootstrap/Button';
 import cogoToast from 'cogo-toast';
 
 
@@ -107,7 +114,18 @@ function App() {
 
   return (
     <div className="App">
-     
+        <BootstrapTable
+        bootstrap4
+        keyField="id"
+        data={tableData}
+        columns={columns}
+        pagination={paginationFactory({ sizePerPage: 5 })}
+      />
+      <div>
+        <Button variant="primary" onClick={onLoad}>Load</Button>{' '}
+        <Button variant="secondary" onClick={onDelete}>Delete</Button>{' '}
+        <Button variant="success" onClick={onAdd}>Add</Button>{' '}
+      </div>
     </div>
   );
 }
