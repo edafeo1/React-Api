@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 
+import { useEffect, useState } from 'react';
 import cogoToast from 'cogo-toast';
 
 
 function App() {
 
+  
   const [tableData, setTableData] = useState([])
 
 
@@ -32,6 +34,32 @@ function App() {
       console.log("Error", error)
     }
   }
+
+
+  const onDelete = () => {
+    try {
+      let data = [...tableData]
+      data.pop()
+      setTableData(data)
+      cogoToast.success("Data deleted successfully")
+    } catch (error) {
+      console.log("Error", error)
+    }
+  }
+
+  const onAdd = () => {
+    try {
+      let data = [...tableData]
+      data = [...data, data[0]]
+      setTableData(data)
+      cogoToast.success("Data Added successfully")
+
+    } catch (error) {
+      console.log("Error", error)
+    }
+  }
+
+  
 
 
   return (
