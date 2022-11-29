@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 import { useEffect, useState } from 'react';
@@ -14,10 +13,12 @@ import cogoToast from 'cogo-toast';
 
 function App() {
 
-  
+  // Inintializing state
   const [tableData, setTableData] = useState([])
 
-
+/**
+ * This function is used to call the api to get the data 
+ */
   const fetchApi = async () => {
     try {
       console.log("working")
@@ -33,7 +34,9 @@ function App() {
     }
   }
 
-
+/**
+ * This functions is called when user hit load button it will call the fetchApi function to get the data from API.
+ */
   const onLoad = () => {
     try {
       fetchApi()
@@ -42,7 +45,9 @@ function App() {
     }
   }
 
-
+/**
+ * This functions is called when user hit delete button.
+ */
   const onDelete = () => {
     try {
       let data = [...tableData]
@@ -54,6 +59,9 @@ function App() {
     }
   }
 
+  /**
+   * This functions is called when user hit add button.
+   */
   const onAdd = () => {
     try {
       let data = [...tableData]
@@ -66,16 +74,19 @@ function App() {
     }
   }
 
-
+/**
+ *  useEffect will be called when table data state changes
+ */
   useEffect(() => {
     tableData.forEach(item => {
+      //checks for the null state province if there is null data it will print "null" in the data field. 
       item['state-province'] = item['state-province'] == null ? "null" : item['state-province']
     })
     console.log("table dat", tableData)
   }, [tableData])
 
   
-
+// configuring table format.
   const columns = [
     {
       dataField: "country",
